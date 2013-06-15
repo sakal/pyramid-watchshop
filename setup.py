@@ -6,7 +6,17 @@ here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
-requires=['pyramid>=1.0.2', 'pyramid_jinja2', 'pyramid_redis_sessions', 'redis']
+requires=[
+    'SQLAlchemy',
+    'pyramid',
+    'pyramid_tm',
+    'pyramid_debugtoolbar',
+    'pyramid_jinja2',
+    'pyramid_redis_sessions',
+    'redis',
+    'transaction',
+    'zope.sqlalchemy',
+]
 
 setup(name='watchshop',
       version='0.1',
