@@ -17,6 +17,10 @@ class AnonymPerm(object):
         (Allow, Everyone, ALL_PERMISSIONS),
     ]
 
+    def __init__(self, request):
+        pass
+
+
 class AuthPerm(object):
     __acl__ = [
         (Allow, Authenticated, ALL_PERMISSIONS),

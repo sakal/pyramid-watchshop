@@ -35,7 +35,7 @@ def main(global_config, **settings):
 
     config.add_static_view('static', 'static')
     config.add_view('watchshop.views.my_view',
-                    context='watchshop.resources.AnonymPerm', 
+                    context='watchshop.resources.AnonymPerm',
                     renderer="mytemplate.jinja2")
 
     return config.make_wsgi_app()
