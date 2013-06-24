@@ -23,8 +23,10 @@ from zope.sqlalchemy import ZopeTransactionExtension
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
 
+user_model = None
 
-class User(Base):
+
+class BaseUser(Base):
     __tablename__ = 'user'
     user_id = Column(Integer, primary_key=True)
     login = Column(String(100), unique=True)
@@ -44,5 +46,5 @@ class User(Base):
                 password=self.password, enabled=self.enabled)
 
 
-
+user_model = BaseUser
 
