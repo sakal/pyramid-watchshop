@@ -14,6 +14,8 @@ from sqlalchemy import (
 
 from watchshop.models import Base
 
+user_model = None
+
 class BaseUser(Base):
     __tablename__ = 'user'
     user_id = Column(Integer, primary_key=True)
@@ -33,5 +35,5 @@ class BaseUser(Base):
             .format(user_id=self.user_id, login=self.login, email=self.email,
                 password=self.password, enabled=self.enabled)
 
-
+user_model = BaseUser
 
