@@ -1,12 +1,13 @@
 import logging
-from .model import user_model
-from ...models import (
+from .model import UserModel
+from watchshop.models import (
     DBSession,
     
 )
 
 def install():
-    user = user_model('admin', 'admin@example.com', 'admin', True)
+    user = UserModel('admin', 'admin@example.com', 'admin', True)
+    DBSession.add(user)
 
 def uninstall():
     pass

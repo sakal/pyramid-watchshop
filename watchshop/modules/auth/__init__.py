@@ -1,7 +1,7 @@
 import logging
 from pyramid.authentication import SessionAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
-from .model import BaseUser
+from .model import UserModel
 
 ROUTE_PREFIX = '/auth'
 

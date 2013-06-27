@@ -36,7 +36,7 @@ def _load_module(config, package, module):
         prefix = None
 
     try:
-        config.include("{package}:{module}".format(package=package, module=module),
+        config.in("{package}:{module}".format(package=package, module=module),
                 route_prefix=prefix)
     except ConfigurationError, e:
         log.error(e)
