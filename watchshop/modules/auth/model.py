@@ -37,3 +37,12 @@ class BaseUser(Base):
 
 UserModel = BaseUser
 
+
+class UserHelper(object):
+    def __init__(self, config):
+        self.config = config
+
+    def attempt_login(self, login, password):
+        pass
+
+

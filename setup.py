@@ -16,6 +16,9 @@ requires=[
     'redis',
     'transaction',
     'zope.sqlalchemy',
+    'deform',
+    'deform_jinja2'
+    'colander',
 ]
 
 setup(name='watchshop',
