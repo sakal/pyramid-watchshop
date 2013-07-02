@@ -29,7 +29,8 @@ def main(global_config, **settings):
     load_modules(config)
 
     config.add_static_view('static', 'static')
-    config.scan(ignore='{0}.modules'.format(__name__))
+    #config.scan(ignore='{0}.modules'.format(__name__))
+    config.scan()
     # config.add_view('watchshop.views.my_view',
     #                context='watchshop.resources.AnonymPerm',
     #                renderer="mytemplate.jinja2")

@@ -36,8 +36,10 @@ def _load_module(config, package, module):
         prefix = None
 
     try:
-        config.in("{package}:{module}".format(package=package, module=module),
-                route_prefix=prefix)
+        config.include(
+            "{package}:{module}".format(package=package, module=module),
+            route_prefix="/{prefix}".format(prefix=prefix)
+        )
     except ConfigurationError, e:
         log.error(e)
     except ImportError, e:
