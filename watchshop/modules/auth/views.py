@@ -4,6 +4,9 @@ from deform import (
     ValidationFailure,
     widget,
 )
+from pyramid.renderers import (
+    render_to_response,
+)
 from pyramid.security import (
     remember,
     forget,
@@ -22,7 +25,7 @@ class AuthSchema(colander.MappingSchema):
             )
     password = colander.SchemaNode(
             colander.String(),
-            #title="Password",
+            title="Password",
             widget=widget.CheckedPasswordWidget(size=30),
             )
 
@@ -62,7 +65,10 @@ class AuthView(object):
             try:
                 appstruct = form.validate(controls)
             except ValidationFailure, e:
-                return {'form': e.render()}
+                return render_to_response(
+                    'templates/auth_form.jinja2',
+                    {'form': e.render()}
+                )
 
             # make here call of attempt_login
             if self.user_helper.attempt_authorize(
@@ -71,7 +77,10 @@ class AuthView(object):
                 remember(self.request, appsctruct['login'])
                 return HTTPFound("/")
             else:
-                return {'form':form.render(appstruct=appstruct)}
+                return render_to_response(
+                    'templates/auth_form.jinja2',
+                    {'form':form.render(appstruct=appstruct)}
+                )
 
             return HTTPFound('/')
         return {'form': form.render()}

@@ -2,7 +2,7 @@ import logging
 from os import listdir
 from os.path import (
     isdir,
-    realpath,
+    abspath,
     dirname,
     join,
 )
@@ -12,7 +12,7 @@ from pyramid.exceptions import ConfigurationError
 
 log = logging.getLogger()
 
-modules_directory = realpath(dirname(__file__))
+modules_directory = abspath(dirname(__file__))
 # get 'watchshop' from 'watchshop.modules'
 package_name = __name__.split('.')[0]
 modules_path = ''.join(__name__.split('.')[1:])
@@ -36,6 +36,8 @@ def _load_module(config, package, module):
         prefix = None
 
     try:
+        if not prefix:
+            prefix = ""
         config.include(
             "{package}:{module}".format(package=package, module=module),
             route_prefix="/{prefix}".format(prefix=prefix)
