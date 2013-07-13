@@ -17,7 +17,7 @@ requires=[
     'transaction',
     'zope.sqlalchemy',
     'deform',
-    'deform_jinja2'
+    #'deform_jinja2'
     'colander',
 ]
 
