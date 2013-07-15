@@ -28,13 +28,21 @@ class NavMenuModel(object):
 
 
 class NavMenuItemModel(object):
-    def __init__(self, name, url=None, icon=None, title=None, hide=False, *kargs, **kwargs):
+    def __init__(self, name, url=None, icon=None, title=None, hide=False, sub_item=None, prefix=None, *kargs, **kwargs):
         super(NavMenuItemModel, self).__init__(*kargs, **kwargs)
         self.name = name
         self.url = url
         self.icon = icon
         self.title = title
         self.hide = hide
+        self.sub_item = sub_item
+        self.prefix = prefix if prefix else ""
+
+        if not self.url:
+            self.url = "{prefix}/{name}"\
+                .format(prefix=self.prefix, name=self.name)
+
+
 
     def render(self):
         pass
