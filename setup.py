@@ -19,6 +19,7 @@ requires=[
     'deform',
     #'deform_jinja2'
     'colander',
+    'Babel',
 ]
 
 setup(name='watchshop',

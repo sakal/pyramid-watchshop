@@ -1,6 +1,7 @@
 
 
 class NavMenuModel(object):
+    """Navigation class container"""
     def __init__(self, *kargs, **kwargs):
         super(NavMenuModel, self).__init__(*kargs, **kwargs)
         self.items = {}
